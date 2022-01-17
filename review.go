@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"time"
 )
 
 func main() {
@@ -32,4 +33,32 @@ func main() {
 	for _, value := range s {
 		fmt.Println(value)
 	}
+
+	// Punteros
+	// g := 27
+	// fmt.Println(g)
+	// h := &g
+	// fmt.Println(h)
+	// fmt.Println(*h)
+
+	// This subroutin will execute in another routine due the reserved word go
+	// But in order that the main routin execute the following a channel must be created and relate it to our subroutin
+	c := make(chan int)
+	go doSomething(c)
+	go doOtherThing()
+	go doSomething(c)
+	<-c
+	fmt.Println("Aqui llegare hasta que las rutinas en los channels terminen? No necesariamente....")
+	fmt.Println("Lo imprimirá?")
+
+}
+
+func doSomething(c chan int) {
+	time.Sleep(3 * time.Second)
+	println("Do something outside of principal :v")
+	c <- 1
+}
+
+func doOtherThing() {
+	println("Me imprimo primero, me ejecuto en el principal")
 }
