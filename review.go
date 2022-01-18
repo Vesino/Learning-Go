@@ -35,11 +35,11 @@ func main() {
 	}
 
 	// Punteros
-	// g := 27
-	// fmt.Println(g)
-	// h := &g
-	// fmt.Println(h)
-	// fmt.Println(*h)
+	g := 27
+	fmt.Println(g)
+	h := &g
+	fmt.Println(h)
+	fmt.Println(*h)
 
 	// This subroutin will execute in another routine due the reserved word go
 	// But in order that the main routin execute the following a channel must be created and relate it to our subroutin
